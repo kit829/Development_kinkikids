@@ -15,7 +15,7 @@ if (!empty($_POST['check'])) {
     // 入力情報をデータベースに登録
     $statement = $db->prepare(
         "INSERT INTO user 
-        SET username=?, password=?, first_name=?, last_name=?, birthday=?, gender_id=?, role_id=?, savings=?, first_login=?, family_id=?"
+        SET username=?, password=?, first_name=?, last_name=?, birthday=?, gender_id=?, role_id=?, savings=?, family_id=?"
     );
     $statement->execute(array(
         $_SESSION['join']['username'],
@@ -26,7 +26,6 @@ if (!empty($_POST['check'])) {
         $_SESSION['join']['gender_id'],
         $_SESSION['join']['role_id'],
         $_SESSION['join']['savings'],
-        $_SESSION['join']['first_login'],
         $_SESSION['join']['family_id']
     ));
 

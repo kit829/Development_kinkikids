@@ -82,11 +82,6 @@ if (!empty($_POST['check'])) {
                 <p>手持ち金額</p>
                 <p><span class="fas fa-angle-double-right"></span> <span class="check-info"><?php echo htmlspecialchars($_SESSION['join']['savings'], ENT_QUOTES); ?></span></p>
             </div>
-
-            <div class="control">
-                <p>初回ログイン日</p>
-                <p><span class="fas fa-angle-double-right"></span> <span class="check-info"><?php echo htmlspecialchars($_SESSION['join']['first_login'], ENT_QUOTES); ?></span></p>
-            </div>
             
             <br>
             <a href="entry.php" class="back-btn">変更する</a>

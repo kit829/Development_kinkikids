@@ -1,3 +1,5 @@
 <?php
-echo "hello";
+echo "こんにちは";
+echo "こんにちは";
+echo "こんにちは";
 ?>

@@ -14,8 +14,8 @@ if (!empty($_POST)) {
     if ($_POST['first_name'] === "") {
         $error['first_name'] = "blank";
     }
-    if ($_POST['family_name'] === "") {
-        $error['family_name'] = "blank";
+    if ($_POST['last_name'] === "") {
+        $error['last_name'] = "blank";
     }
     if ($_POST['birthday'] === "") {
         $error['birthday'] = "blank";
@@ -29,8 +29,8 @@ if (!empty($_POST)) {
     if ($_POST['role_id'] === "") {
         $error['role_id'] = "blank";
     }
-    if ($_POST['role_id'] === "") {
-        $error['role_id'] = "blank";
+    if ($_POST['family_name'] === "") {
+        $error['family_name'] = "blank";
     }
 
     /* usernameの重複を検知 */

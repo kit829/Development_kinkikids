@@ -1,40 +1,10 @@
 <?php
-require("./db_connect.php");
-session_start();
- 
-/* 会員登録の手続き以外のアクセスを飛ばす */
-if (!isset($_SESSION['join'])) {
-    header('Location: entry.php');
-    exit();
-}
- 
-if (!empty($_POST['check'])) {
-    // パスワードを暗号化
-    $hash = password_hash($_SESSION['join']['password'], PASSWORD_BCRYPT);
- 
-    // 入力情報をデータベースに登録
-    $statement = $db->prepare(
-        "INSERT INTO user 
-        SET username=?, password=?, first_name=?, family_name=?, birthday=?, gender_id=?, role_id=?, savings=?, first_login=?, family_id=?"
-    );
-    $statement->execute(array(
-        $_SESSION['join']['username'],
-        $hash,
-        $_SESSION['join']['first_name'],
-        $_SESSION['join']['family_name'],
-        $_SESSION['join']['birthday'],
-        $_SESSION['join']['gender_id'],
-        $_SESSION['join']['role_id'],
-        $_SESSION['join']['savings'],
-        $_SESSION['join']['first_login'],
-        $_SESSION['join']['family_id']
-    ));
-
- 
-    unset($_SESSION['join']);   // セッションを破棄
-    header('Location: thank.php');   // thank.phpへ移動
-    exit();
-}
+    require("./db_connect.php");
+    require("./check_function.php");
+    session_start();
+    // データベース接続を行う
+    $db = new connect();
+    checkUser($db,$_SESSION['join'])
 ?>
 <!DOCTYPE html>
 <html lang="ja">

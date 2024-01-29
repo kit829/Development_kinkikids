@@ -65,13 +65,16 @@ class entry{
     }
 
     public function role_select(){
-        $stmt = $this->$db->query("SELECT role_id,role_name FROM role");
-        foreach($stmt as $record){
-            echo '<option value="';
-            echo $record[0];
-            echo '">';
-            echo $record[1];
-            echo "</option>";
+        // $this->db が null でないことを確認
+        if ($this->db !== null) { 
+            $stmt = $this->db->query("SELECT role_id,role_name FROM role");
+            foreach($stmt as $record){
+                echo '<option value="';
+                echo $record[0];
+                echo '">';
+                echo $record[1];
+                echo "</option>";
+            }
         }
     }
 }

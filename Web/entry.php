@@ -1,5 +1,6 @@
 <!-- ユーザー登録ページ -->
 <?php 
+// test
 require("./db_connect.php");
 require("./entry_class.php");
 session_start();

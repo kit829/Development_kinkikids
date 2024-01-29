@@ -1,4 +1,5 @@
 <?php
+// test
 class connect extends PDO {
     const DB_NAME = "kinkikids";
     const HOST = "127.0.0.1";

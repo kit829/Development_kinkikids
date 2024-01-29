@@ -1,4 +1,5 @@
 <?php
+// test
 class entry{
     private $error; // エラー情報を保持するプロパティ
     private $db; // データベース接続を保持するプロパティ

@@ -81,13 +81,13 @@ if (!empty($_POST)) {
             </div>
 
             <div class="control">
-                <label for="first_name">苗字</label>
-                <input id="first_name" type="text" name="first_name">
+                <label for="last_name">苗字</label>
+                <input id="last_name" type="text" name="last_name">
             </div>
 
             <div class="control">
-                <label for="family_name">名前</label>
-                <input id="family_name" type="text" name="family_name">
+                <label for="first_name">名前</label>
+                <input id="first_name" type="text" name="first_name">
             </div>
 
             <div class="control">

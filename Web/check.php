@@ -35,8 +35,6 @@ if (!empty($_POST['check'])) {
 
     // 入力情報をデータベースに登録
     $statement = $db->prepare(
-        // "INSERT INTO user 
-        // SET username=?, password=?, first_name=?, last_name=?, birthday=?, gender_id=?, role_id=?, savings=?, family_id"
         "INSERT INTO user 
         (username, password, first_name, last_name, birthday, gender_id, role_id, savings, family_id)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"

@@ -1,18 +1,38 @@
 <?php
-require("./dbconnect.php");
-require("./check_function.php");
+require("./db_connect.php");
 session_start();
-
+ 
 /* 会員登録の手続き以外のアクセスを飛ばす */
 if (!isset($_SESSION['join'])) {
     header('Location: entry.php');
     exit();
 }
-
+ 
 if (!empty($_POST['check'])) {
-    checkUser($db, $_SESSION['join']);
+    // パスワードを暗号化
+    $hash = password_hash($_SESSION['join']['password'], PASSWORD_BCRYPT);
+ 
+    // 入力情報をデータベースに登録
+    $statement = $db->prepare(
+        "INSERT INTO user 
+        SET username=?, password=?, first_name=?, family_name=?, birthday=?, gender_id=?, role_id=?, savings=?, first_login=?, family_id=?"
+    );
+    $statement->execute(array(
+        $_SESSION['join']['username'],
+        $hash,
+        $_SESSION['join']['first_name'],
+        $_SESSION['join']['family_name'],
+        $_SESSION['join']['birthday'],
+        $_SESSION['join']['gender_id'],
+        $_SESSION['join']['role_id'],
+        $_SESSION['join']['savings'],
+        $_SESSION['join']['first_login'],
+        $_SESSION['join']['family_id']
+    ));
+
+ 
     unset($_SESSION['join']);   // セッションを破棄
-    header('Location: thank.php');
+    header('Location: thank.php');   // thank.phpへ移動
     exit();
 }
 ?>
@@ -44,13 +64,13 @@ if (!empty($_POST['check'])) {
             </div>
  
             <div class="control">
-                <p>名字</p>
-                <p><span class="fas fa-angle-double-right"></span> <span class="check-info"><?php echo htmlspecialchars($_SESSION['join']['last_name'], ENT_QUOTES); ?></span></p>
+                <p>名前</p>
+                <p><span class="fas fa-angle-double-right"></span> <span class="check-info"><?php echo htmlspecialchars($_SESSION['join']['first_name'], ENT_QUOTES); ?></span></p>
             </div>
 
             <div class="control">
-                <p>名前</p>
-                <p><span class="fas fa-angle-double-right"></span> <span class="check-info"><?php echo htmlspecialchars($_SESSION['join']['first_name'], ENT_QUOTES); ?></span></p>
+                <p>名字</p>
+                <p><span class="fas fa-angle-double-right"></span> <span class="check-info"><?php echo htmlspecialchars($_SESSION['join']['family_name'], ENT_QUOTES); ?></span></p>
             </div>
 
             <div class="control">
@@ -64,8 +84,8 @@ if (!empty($_POST['check'])) {
             </div>
 
             <div class="control">
-                <p>家族名</p>
-                <p><span class="fas fa-angle-double-right"></span> <span class="check-info"><?php echo htmlspecialchars($_SESSION['join']['family_name'], ENT_QUOTES); ?></span></p>
+                <p>初回ログイン日</p>
+                <p><span class="fas fa-angle-double-right"></span> <span class="check-info"><?php echo htmlspecialchars($_SESSION['join']['first_login'], ENT_QUOTES); ?></span></p>
             </div>
             
             <br>

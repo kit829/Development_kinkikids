@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(isset($_POST["id"])&isset($_POST["id"])){
-    $_SESSION["user_id"] = $_POST["id"];
+    $_SESSION["id"] = $_POST["id"];
     $_SESSION["family_id"] = $_POST["fid"];
     echo "ユーザーID=".$_POST["id"];
     echo "<br>";

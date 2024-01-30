@@ -11,9 +11,9 @@ class testpoint{
     public function role_select(){
         // $this->db が null でないことを確認
         if ($this->db !== null) { 
-            if(isset($_SESSION["user_id"])){
+            if(isset($_SESSION["id"])){
                 $sql = "SELECT sender_id,receiver_id,messagetext,sent_time FROM line_message WHERE receiver_id = ";
-                $id = $_SESSION["user_id"];
+                $id = $_SESSION["id"];
                 $sql = $sql.$id;
                 $stmt = $this->db->query($sql);
                 $f = true;
@@ -37,9 +37,9 @@ class testpoint{
         }
     }
     public function sessiontest(){
-        if(isset($_SESSION["user_id"])){
+        if(isset($_SESSION["id"])){
             echo "ログインID=";
-            echo $_SESSION["user_id"];
+            echo $_SESSION["id"];
         }else{
             echo "ログインしてや";
         }

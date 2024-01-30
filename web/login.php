@@ -1,9 +1,12 @@
 <?php
 //ファイルの読み込み
 require_once "db_connect.php";
-require_once "functions.php";
+require_once "function.php";
 //セッション開始
 session_start();
+
+$db = new connect();
+$pdo = $db;
 
 // セッション変数 $_SESSION["loggedin"]を確認。ログイン済だったらウェルカムページへリダイレクト
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
@@ -40,9 +43,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $errors = validation($datas,false);
     if(empty($errors)){
         //ユーザーネームから該当するユーザー情報を取得
-        $sql = "SELECT id,username,password FROM users WHERE username = :username";
+        $sql = "SELECT user_id,username,password FROM user WHERE username = :username";
         $stmt = $pdo->prepare($sql);
-        $stmt->bindValue('username',$datas['username'],PDO::PARAM_INT);
+        // $stmt->bindValue('username',$datas['username'],PDO::PARAM_INT);
+        $stmt->bindValue('username',$datas['username'],PDO::PARAM_STR);
         $stmt->execute();
 
         //ユーザー情報があれば変数に格納

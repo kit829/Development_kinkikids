@@ -9,7 +9,7 @@ class entry{
         $this->error = []; // 初期化
 
         if (!empty($_POST)) {
-            /* 入力情報に空白がないか検知 */
+            /* 入力情報に空白がないか検知　【FIXME】ループで */
             if ($_POST['username'] === "") {
                 $error['username'] = "blank";
             }
@@ -38,7 +38,7 @@ class entry{
                 $error['family_name'] = "blank";
             }
         
-            /* usernameの重複を検知 */
+            /* usernameの重複を検知　【FIXME】エラーメッセージ表示 */
             if (!isset($error)) {
                 $user = $db->prepare('SELECT COUNT(*) as cnt FROM user WHERE username=?');
                 $user->execute(array(

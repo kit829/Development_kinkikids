@@ -37,7 +37,7 @@ $entry = new entry($db);
             </div>
 
             <div class="control">
-                <label for="last_name">苗字</label>
+                <label for="last_name">名字</label>
                 <input id="last_name" type="text" name="last_name">
             </div>
 

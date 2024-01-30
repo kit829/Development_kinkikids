@@ -1,4 +1,3 @@
-<!-- ユーザー登録ページ -->
 <?php 
 // test
 session_start();

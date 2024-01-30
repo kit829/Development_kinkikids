@@ -1,6 +1,6 @@
 <?php
     require("./db_connect.php");
-    require("./check_function.php");
+    require("./check_class.php");
     session_start();
     // データベース接続を行う
     $db = new connect();
@@ -32,15 +32,15 @@
                 <p>ユーザーネーム</p>
                 <p><span class="fas fa-angle-double-right"></span> <span class="check-info"><?php echo htmlspecialchars($_SESSION['join']['username'], ENT_QUOTES); ?></span></p>
             </div>
- 
-            <div class="control">
-                <p>名前</p>
-                <p><span class="fas fa-angle-double-right"></span> <span class="check-info"><?php echo htmlspecialchars($_SESSION['join']['first_name'], ENT_QUOTES); ?></span></p>
-            </div>
 
             <div class="control">
                 <p>名字</p>
-                <p><span class="fas fa-angle-double-right"></span> <span class="check-info"><?php echo htmlspecialchars($_SESSION['join']['family_name'], ENT_QUOTES); ?></span></p>
+                <p><span class="fas fa-angle-double-right"></span> <span class="check-info"><?php echo htmlspecialchars($_SESSION['join']['last_name'], ENT_QUOTES); ?></span></p>
+            </div>
+
+            <div class="control">
+                <p>名前</p>
+                <p><span class="fas fa-angle-double-right"></span> <span class="check-info"><?php echo htmlspecialchars($_SESSION['join']['first_name'], ENT_QUOTES); ?></span></p>
             </div>
 
             <div class="control">
@@ -53,10 +53,10 @@
                 <p><span class="fas fa-angle-double-right"></span> <span class="check-info"><?php echo htmlspecialchars($_SESSION['join']['savings'], ENT_QUOTES); ?></span></p>
             </div>
 
-            <div class="control">
+            <!-- <div class="control">
                 <p>初回ログイン日</p>
                 <p><span class="fas fa-angle-double-right"></span> <span class="check-info"><?php echo htmlspecialchars($_SESSION['join']['first_login'], ENT_QUOTES); ?></span></p>
-            </div>
+            </div> -->
             
             <br>
             <a href="entry.php" class="back-btn">変更する</a>

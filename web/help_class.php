@@ -64,29 +64,13 @@ class help
         $stmt->execute($params);
     }
 
-    public function display_help()
-    {
-        $sql = "SELECT * FROM help";
-        $stmt = $this->db->query($sql);
+    public function display_help($user_id) {
+        $stmt = $this->db->prepare("SELECT * FROM help WHERE user_id = :user_id");
+        $stmt->bindParam(':user_id', $user_id);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        if ($stmt) {
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            if ($result) {
-                echo "<h2>登録されたお手伝い一覧</h2>";
-                echo "<ul>";
-                foreach ($result as $row) {
-                    echo "<li>お手伝い名: " . $row['help_id'] . ", 詳細: " . $row['help_detail'] . ", 獲得ポイント: " . $row['get_point'] . "</li>";
-                }
-                echo "</ul>";
-            } else {
-                echo "登録されたお手伝いはありません。";
-            }
-        } else {
-            // クエリ実行エラーがある場合の処理
-            $errorInfo = $this->db->errorInfo();
-            echo "エラー: " . $errorInfo[2];
-        }
+        return $result;
     }
 }
 ?>

@@ -12,7 +12,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 
 $db = new connect();
-$entry = new goal($db);
+$goal = new goal($db);
 
 ?>
 <!DOCTYPE html>

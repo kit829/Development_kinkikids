@@ -5,6 +5,11 @@ require("./db_connect.php");
 require("./goal_class.php");
 session_start();
 
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+
 // データベース接続を行う
 $db = new connect();
 

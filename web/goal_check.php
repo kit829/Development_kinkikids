@@ -3,6 +3,11 @@
 <?php
 session_start();
 
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+
 if (!isset($_SESSION['join'])) {
     header('Location: goal.php');
     exit();
@@ -40,6 +45,8 @@ unset($_SESSION['join']);
         <p><strong>ユーザーID:</strong> <?php echo htmlspecialchars($user_id); ?></p>
         <p><strong>ファミリーID:</strong> <?php echo htmlspecialchars($family_id); ?></p>
         <p><strong>登録日時:</strong> <?php echo htmlspecialchars($goal_created_date); ?></p>
+
+        <button type="submit">目標設定する</button>
 
         <p class="mt-3">
             <a href="goal.php" class="btn btn-primary">目標設定に戻る</a>

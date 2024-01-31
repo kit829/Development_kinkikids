@@ -57,7 +57,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 session_regenerate_id(true);
                 //セッション変数にログイン情報を格納
                 $_SESSION["loggedin"] = true;
-                $_SESSION["id"] = $row['id'];
+                $_SESSION["user_id"] = $row['user_id'];
                 $_SESSION["username"] =  $row['username'];
                 //ウェルカムページへリダイレクト
                 header("location:welcome.php");

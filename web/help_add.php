@@ -41,7 +41,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             <ul>
                 <?php foreach ($helps as $help): ?>
                     <li>
-                        <strong>お手伝い名:</strong> <?php echo $help['help_name']; ?> 円<br>
+                        <strong>お手伝い名:</strong> <?php echo $help['help_name']; ?><br>
                         <strong>お手伝い詳細</strong> <?php echo $help['help_detail']; ?><br>
                         <strong>獲得ポイント:</strong> <?php echo $help['get_point']; ?><br>
                     </li>

@@ -10,11 +10,10 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     exit;
 }
 
-// データベース接続を行う
-$db = new connect();
 
-// entryクラスのインスタンスを作成
-$entry = new entry($db);
+$db = new connect();
+$entry = new goal($db);
+
 ?>
 <!DOCTYPE html>
 <html>
